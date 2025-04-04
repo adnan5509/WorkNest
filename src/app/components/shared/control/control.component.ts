@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, Input, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -9,6 +9,8 @@ import { Component, HostBinding, HostListener, Input, ViewEncapsulation } from '
   encapsulation: ViewEncapsulation.None,
 })
 export class ControlComponent {
+
+  constructor(private elementRef: ElementRef) { }
 
   @HostBinding('class') className = 'control';
 
