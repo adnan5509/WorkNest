@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -11,6 +11,14 @@ import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
 export class ControlComponent {
 
   @HostBinding('class') className = 'control';
+
+  @HostListener('mouseenter') onHover() {
+    this.className = 'control highlight';  // Add 'highlight' class on hover
+  }
+
+  @HostListener('mouseleave') onLeave() {
+    this.className = 'control';  // Remove 'highlight' class on mouse leave
+  }
 
   @Input({ required: true }) title!: string;
 

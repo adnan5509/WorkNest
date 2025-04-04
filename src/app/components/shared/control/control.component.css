@@ -16,3 +16,9 @@
     font-size: 0.9rem;
     color: #4f4b53;
   }
+
+  .control.highlight {
+    /* Highlighted style when hovering */
+    background-color: #68686393;  
+    border-color: #0f0f0f;
+  }
