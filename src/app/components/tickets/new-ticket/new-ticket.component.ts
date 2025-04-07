@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { ControlComponent } from "../../shared/control/control.component";
 import { FormsModule } from '@angular/forms';
+import { Ticket } from '../../dashboard/support-tickets/ticket.model';
 
 @Component({
   selector: 'app-new-ticket',
@@ -13,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 export class NewTicketComponent implements OnInit, AfterViewInit {
 
   @ViewChild('newTicketForm') form?: ElementRef
+
+  @Output() newTicketCreated = new EventEmitter<Ticket>();
 
   ngOnInit() {
     console.log("New Ticket OnInit called");
@@ -27,6 +30,8 @@ export class NewTicketComponent implements OnInit, AfterViewInit {
   submitTicket(ticketTitle: string, requestText: string) {
     console.log('Ticket Title:', ticketTitle);
     console.log('Request Text:', requestText);
+
+    this.newTicketCreated.emit({ ticketTitle, requestText });
 
     this.form?.nativeElement.reset();
   }

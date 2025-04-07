@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NewTicketComponent } from "../../tickets/new-ticket/new-ticket.component";
+import { Ticket } from './ticket.model';
 
 @Component({
   selector: 'app-support-tickets',
@@ -9,5 +10,10 @@ import { NewTicketComponent } from "../../tickets/new-ticket/new-ticket.componen
   styleUrl: './support-tickets.component.css'
 })
 export class SupportTicketsComponent {
+  tickets: Ticket[] = [];
+
+  onNewTicketCreated($event: Ticket) {
+    this.tickets.push($event);
+  }
 
 }
