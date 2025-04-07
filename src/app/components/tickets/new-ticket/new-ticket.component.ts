@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, Vie
 import { ButtonComponent } from '../../shared/button/button.component';
 import { ControlComponent } from "../../shared/control/control.component";
 import { FormsModule } from '@angular/forms';
-import { Ticket } from '../../dashboard/support-tickets/ticket.model';
 
 @Component({
   selector: 'app-new-ticket',
@@ -15,7 +14,7 @@ export class NewTicketComponent implements OnInit, AfterViewInit {
 
   @ViewChild('newTicketForm') form?: ElementRef
 
-  @Output() newTicketCreated = new EventEmitter<Ticket>();
+  @Output() newTicketCreated = new EventEmitter<{ ticketTitle: string, requestText: string }>();
 
   ngOnInit() {
     console.log("New Ticket OnInit called");

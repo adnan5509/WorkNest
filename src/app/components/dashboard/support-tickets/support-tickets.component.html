@@ -1,7 +1,14 @@
-<app-new-ticket (newTicketCreated)="onNewTicketCreated($event)"></app-new-ticket>
-@for (ticket of tickets; track $index) {
 <div>
-    <p>Title : {{ ticket.ticketTitle }}</p>
-    <p>Request : {{ ticket.requestText }}</p>
+    <ul>
+
+        @for (ticket of tickets; track ticket.id) {
+        <li>
+            <app-ticket [ticket]="ticket"></app-ticket>
+        </li>
+        } @empty {
+        <p>No tickets available</p>
+        }
+    </ul>
 </div>
-}
+
+<app-new-ticket (newTicketCreated)="onNewTicketCreated($event)"></app-new-ticket>
