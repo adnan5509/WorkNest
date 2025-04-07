@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, HostBinding, HostListener, Input, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, ElementRef, HostBinding, HostListener, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -11,9 +11,19 @@ import { Component, ContentChild, ElementRef, HostBinding, HostListener, Input, 
     '(click)': 'onClick()',
   }
 })
-export class ControlComponent {
+export class ControlComponent implements OnInit, AfterContentInit {
 
   constructor() { }
+
+  ngOnInit() {
+    console.log("Control OnInit called");
+    console.log(this.controlInput?.nativeElement);
+  }
+
+  ngAfterContentInit() {
+    console.log("Control AfterContentInit called");
+    console.log(this.controlInput?.nativeElement);
+  }
 
   @ContentChild('input') controlInput?: ElementRef;
 
