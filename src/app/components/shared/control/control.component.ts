@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, ElementRef, HostBinding, HostListener, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, afterNextRender, afterRender, Component, ContentChild, ElementRef, HostBinding, HostListener, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -13,7 +13,15 @@ import { AfterContentInit, Component, ContentChild, ElementRef, HostBinding, Hos
 })
 export class ControlComponent implements OnInit, AfterContentInit {
 
-  constructor() { }
+  constructor() {
+    afterRender(() => {
+      console.log("Control AfterRender called");
+    })
+
+    afterNextRender(() => {
+      console.log("Control AfterNextRender called");
+    });
+  }
 
   ngOnInit() {
     console.log("Control OnInit called");
