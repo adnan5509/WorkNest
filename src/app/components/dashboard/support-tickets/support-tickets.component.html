@@ -3,7 +3,7 @@
 
         @for (ticket of tickets; track ticket.id) {
         <li>
-            <app-ticket [ticket]="ticket"></app-ticket>
+            <app-ticket [ticket]="ticket" (completeTicket)="onCompleteTicket(ticket.id)"></app-ticket>
         </li>
         } @empty {
         <p>No tickets available</p>

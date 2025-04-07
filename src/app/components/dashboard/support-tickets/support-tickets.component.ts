@@ -13,6 +13,7 @@ import { TicketComponent } from "./ticket/ticket.component";
   styleUrl: './support-tickets.component.css'
 })
 export class SupportTicketsComponent {
+
   tickets: Ticket[] = [];
 
   onNewTicketCreated($event: { ticketTitle: string, requestText: string }) {
@@ -21,6 +22,18 @@ export class SupportTicketsComponent {
       ticketTitle: $event.ticketTitle,
       requestText: $event.requestText,
       status: 'open'
+    });
+  }
+
+  onCompleteTicket(ticketId: string) {
+    this.tickets = this.tickets.map((ticket) => {
+      if (ticket.id === ticketId) {
+        return {
+          ...ticket,
+          status: 'closed'
+        }
+      }
+      return ticket;
     });
   }
 

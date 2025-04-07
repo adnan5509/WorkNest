@@ -4,10 +4,10 @@
           'ticket-open': ticket.status === 'open',
           'ticket-closed': ticket.status === 'closed',
         }"></div>
-        <button>
+        <button (click)="toggleTicketDetails()">
             <span class="text">{{ticket.ticketTitle}}</span>
             <span>
-                @if (ticket.status === 'open') {
+                @if (!isTicketDetailsVisible) {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -24,10 +24,10 @@
         </button>
     </h3>
 
-    @if (true) {
+    @if (isTicketDetailsVisible) {
     <p>{{ticket.requestText}}</p>
 
     @if (ticket.status === 'open') {
-    <p><button>Mark as completed</button></p>
+    <p><button (click)="onMarkTicketAsComplete()">Mark as completed</button></p>
     } }
 </article>

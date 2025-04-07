@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Ticket } from '../ticket.model';
 
 @Component({
@@ -11,4 +11,16 @@ import { Ticket } from '../ticket.model';
 export class TicketComponent {
 
   @Input({ required: true }) ticket!: Ticket;
+  @Output() completeTicket = new EventEmitter();
+
+  isTicketDetailsVisible = false;
+
+  toggleTicketDetails() {
+    this.isTicketDetailsVisible = !this.isTicketDetailsVisible;
+  }
+
+  onMarkTicketAsComplete() {
+    this.completeTicket.emit();
+  }
+
 }
